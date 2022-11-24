@@ -8,6 +8,14 @@ class Post {
       JOIN users AS u ON (u.id = p.userId) LEFT
       JOIN relationships AS r ON (p.userId=r.followedUserId) WHERE r.followerUserId = ${id} 
       OR p.userId = ${id} ORDER BY p.createdAt DESC`;
+
+    return db.execute(sql);
+  }
+
+  static addPost(post, date, uid) {
+    const sql = `INSERT into posts (posts.desc,img,userId,createdAt)
+      VALUES ('${post.desc}','${post.img}','${uid}','${date}');`;
+
     return db.execute(sql);
   }
 }

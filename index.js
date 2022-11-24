@@ -5,6 +5,7 @@ import userRoutes from './routes/users.js';
 import postRoutes from './routes/posts.js';
 import commentRoutes from './routes/comments.js';
 import likeRoutes from './routes/users.js';
+import uploadRoutes from './routes/upload.js';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
@@ -40,6 +41,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/comments', commentRoutes);
 app.use('/api/likes', likeRoutes);
+app.use('/api/uploadImage', uploadRoutes);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
