@@ -4,7 +4,7 @@ import authRoutes from './routes/auth.js';
 import userRoutes from './routes/users.js';
 import postRoutes from './routes/posts.js';
 import commentRoutes from './routes/comments.js';
-import likeRoutes from './routes/users.js';
+import likeRoutes from './routes/likes.js';
 import uploadRoutes from './routes/upload.js';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
