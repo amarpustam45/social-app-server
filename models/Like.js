@@ -17,7 +17,7 @@ class Like {
   }
 
   static deleteLike(post, uid) {
-    const sql = `DELETE FROM likes where userId=${uid} and postId=${post.postId};`;
+    const sql = `DELETE FROM likes where userId=${uid} and postId=${post};`;
 
     return db.execute(sql);
   }
