@@ -9,15 +9,9 @@ class User {
     return db.execute(sql);
   }
 
-  static addUser(post, uid) {
-    const sql = `INSERT into Users (userId,postId)
-      VALUES ('${uid}',${post.postId});`;
-
-    return db.execute(sql);
-  }
-
-  static deleteUser(post, uid) {
-    const sql = `DELETE FROM Users where userId=${uid} and postId=${post};`;
+  static updateUser(user, uid) {
+    const sql = `UPDATE users SET username='${user.username}', name='${user.name}', coverPic='${user.coverPic}', 
+    profilePic='${user.profilePic}', city='${user.city}', website='${user.website}' WHERE id=${uid};`;
 
     return db.execute(sql);
   }

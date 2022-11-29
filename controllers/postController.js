@@ -6,6 +6,7 @@ import moment from 'moment';
 dotenv.config();
 
 export const getPosts = async (req, res) => {
+  const userId = req.query.userId;
   const token = req.cookies.socialAppAccessToken;
 
   if (!token) return res.status(401).json('Not Authenticated! Please Login');
@@ -13,7 +14,7 @@ export const getPosts = async (req, res) => {
     if (err) res.status(403).json('Token is not valid!');
 
     try {
-      let [posts, _] = await Post.getAllPosts(userInfo.id);
+      let [posts, _] = await Post.getAllPosts(userId, userInfo.id);
       return res.status(200).json(posts);
     } catch (error) {
       return res.status(500).json(error);
