@@ -22,6 +22,12 @@ class Post {
 
     return db.execute(sql);
   }
+
+  static deletePost(pid, uid) {
+    const sql = `DELETE FROM posts WHERE id=${pid} AND userId=${uid};`;
+
+    return db.execute(sql);
+  }
 }
 
 export default Post;

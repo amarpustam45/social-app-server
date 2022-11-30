@@ -45,6 +45,7 @@ export const login = async (req, res) => {
       //set the user information as a cookie to be used by other processes
       res
         .cookie('socialAppAccessToken', token, {
+          maxAge: 900000,
           sameSite: 'none',
           secure: true,
           httpOnly: true,

@@ -38,3 +38,19 @@ export const addPost = async (req, res) => {
     }
   });
 };
+
+export const deletePost = async (req, res) => {
+  const token = req.cookies.socialAppAccessToken;
+
+  if (!token) return res.status(401).json('Not Authenticated! Please Login');
+  jwt.verify(token, process.env.JWT_KEY, async (err, userInfo) => {
+    if (err) res.status(403).json('Token is not valid!');
+
+    try {
+      await Post.deletePost(req.params.id, userInfo.id);
+      return res.status(200).json('Post has been deleted sucessfully!');
+    } catch (error) {
+      return res.status(500).json({ error, msg: 'Unable to delete post' });
+    }
+  });
+};
